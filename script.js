@@ -2,17 +2,17 @@
 // id는 나중에 두 카드가 짝이 맞는지 확인할 때 사용됩니다.
 const solarSystemData = [
     { id: 1, type: 'text', content: '우리 태양계의 중심이며 스스로 빛을 내는 아주 뜨거운 별이에요.' },
-    { id: 1, type: 'image', content: 'C:/Users/user/.gemini/antigravity-ide/brain/6d5dd0f2-a21b-4b07-9e02-75f77f30da9f/planet_sun_1789263278905.jpg' },
+    { id: 1, type: 'image', content: './images/planet_sun_1789263278905.jpg' },
     { id: 2, type: 'text', content: '태양에서 가장 가깝고, 표면에 구덩이가 많은 행성이에요.' },
-    { id: 2, type: 'image', content: 'C:/Users/user/.gemini/antigravity-ide/brain/6d5dd0f2-a21b-4b07-9e02-75f77f30da9f/planet_mercury_1789263291119.jpg' },
+    { id: 2, type: 'image', content: './images/planet_mercury_1789263291119.jpg' },
     { id: 3, type: 'text', content: '두꺼운 구름으로 덮여 있어 밤하늘에서 제일 밝게 빛나요.' },
-    { id: 3, type: 'image', content: 'C:/Users/user/.gemini/antigravity-ide/brain/6d5dd0f2-a21b-4b07-9e02-75f77f30da9f/planet_venus_1789263303627.jpg' },
+    { id: 3, type: 'image', content: './images/planet_venus_1789263303627.jpg' },
     { id: 4, type: 'text', content: '바다와 공기가 있어서 우리가 살고 있는 푸르고 아름다운 행성이에요.' },
-    { id: 4, type: 'image', content: 'C:/Users/user/.gemini/antigravity-ide/brain/6d5dd0f2-a21b-4b07-9e02-75f77f30da9f/planet_earth_1789263332329.jpg' },
+    { id: 4, type: 'image', content: './images/planet_earth_1789263332329.jpg' },
     { id: 5, type: 'text', content: '흙이 붉은색이어서 붉은 행성이라 불리며 탐사선이 많이 가요.' },
-    { id: 5, type: 'image', content: 'C:/Users/user/.gemini/antigravity-ide/brain/6d5dd0f2-a21b-4b07-9e02-75f77f30da9f/planet_mars_1789263344430.jpg' },
+    { id: 5, type: 'image', content: './images/planet_mars_1789263344430.jpg' },
     { id: 6, type: 'text', content: '태양계에서 가장 덩치가 크고, 표면에 줄무늬가 있는 가스 행성이에요.' },
-    { id: 6, type: 'image', content: 'C:/Users/user/.gemini/antigravity-ide/brain/6d5dd0f2-a21b-4b07-9e02-75f77f30da9f/planet_jupiter_1789263357965.jpg' }
+    { id: 6, type: 'image', content: './images/planet_jupiter_1789263357965.jpg' }
 ];
 
 const grid = document.getElementById('grid'); // 게임판 요소를 가져옵니다.
@@ -76,7 +76,7 @@ function initGame() {
             cardFront.textContent = cardData.content;
         } else if (cardData.type === 'image') {
             const imgElement = document.createElement('img');
-            imgElement.src = 'file:///' + cardData.content;
+            imgElement.src = cardData.content;
             imgElement.classList.add('card-img');
             cardFront.appendChild(imgElement);
         }
