@@ -1,0 +1,157 @@
+/* 모든 기본 여백을 없애고 폰트를 설정합니다. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jua', sans-serif; /* 귀엽고 읽기 편한 구글 폰트 적용 */
+}
+
+/* 웹 페이지의 전체 배경입니다. 태양계(우주) 느낌이 나도록 어두운 남색 그라데이션으로 꾸몄습니다. */
+body {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* 화면 가운데 정렬 */
+    align-items: center; /* 화면 가운데 정렬 */
+    color: #333;
+}
+
+/* 게임의 제목과 카드판이 들어가는 메인 상자입니다. */
+.game-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 그림자를 주어 입체감을 냅니다. */
+    text-align: center;
+    max-width: 800px;
+    width: 95%;
+}
+
+h1 {
+    color: #f39c12; /* 제목 글씨 색깔을 별빛처럼 노란/주황색으로 변경 */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* 카드가 4x4(16장)로 배치될 판입니다. */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4칸으로 나눕니다. */
+    gap: 15px; /* 카드 사이의 간격입니다. */
+    margin-bottom: 30px;
+}
+
+/* 개별 카드 하나의 설정입니다. */
+.card {
+    width: 100%;
+    aspect-ratio: 1; /* 카드를 정사각형으로 만듭니다. */
+    background-color: transparent;
+    cursor: pointer;
+    perspective: 1000px; /* 카드가 뒤집힐 때 3D 효과를 줍니다. */
+}
+
+/* 카드의 앞면과 뒷면을 감싸는 속 상자입니다. 뒤집기 애니메이션을 위해 필요합니다. */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s; /* 0.6초 동안 부드럽게 뒤집히도록 설정합니다. */
+    transform-style: preserve-3d;
+}
+
+/* 'flip'이라는 클래스가 추가되면 카드가 180도 회전합니다. (자바스크립트에서 제어) */
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 카드의 앞면과 뒷면의 공통 설정입니다. */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* 뒷면일 때는 보이지 않게 합니다. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-size: 1.5rem; /* 글씨 크기를 크게 하여 기독성을 높입니다. */
+    padding: 10px;
+    text-align: center;
+    word-break: keep-all; /* 단어가 중간에 끊기지 않도록 합니다. */
+}
+
+/* 카드 뒷면(처음에 보이는 면) 디자인입니다. */
+.card-back {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    font-size: 3rem; /* 물음표 크기 */
+}
+
+/* 카드 앞면(뒤집었을 때 보이는 면) 디자인입니다. 특징 글씨나 이모지가 나옵니다. */
+.card-front {
+    background-color: #fff;
+    border: 3px solid #4facfe;
+    color: #333;
+    transform: rotateY(180deg); /* 앞면은 미리 180도 돌려놓습니다. */
+}
+
+/* 특징을 적어둔 카드의 글씨 설정입니다. */
+.card-text {
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+/* 그림(이미지)이 있는 카드의 이미지 크기 설정입니다. */
+.card-img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+/* 짝을 맞춘 카드는 조금 투명하게 만들어 이미 맞췄음을 표시합니다. */
+.card.matched {
+    opacity: 0.5;
+    pointer-events: none; /* 클릭할 수 없게 만듭니다. */
+}
+
+/* 다시 시작하기 버튼 디자인입니다. */
+.restart-btn {
+    background-color: #ff9a9e;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Jua', sans-serif;
+}
+
+.restart-btn:hover {
+    background-color: #ff758c; /* 마우스를 올렸을 때 색이 진해집니다. */
+}
+
+/* 화면이 작을 때(모바일 기기 등)의 대응입니다. */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .card-text {
+        font-size: 1rem; /* 화면이 작으면 글씨를 조금 줄입니다. */
+    }
+    .card-img {
+        width: 90%;
+        height: 90%;
+    }
+    .card-front, .card-back {
+        font-size: 1rem;
+    }
+}

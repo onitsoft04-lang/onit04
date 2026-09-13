@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태양계 특징 맞추기 게임!</title>
+    <!-- 외부의 style.css 파일을 불러와서 디자인을 적용합니다. -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 구글 폰트를 가져와서 글씨체를 예쁘게 만듭니다. 'Jua' 폰트는 귀엽고 굵어서 아이들이 읽기 좋습니다. -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 게임 전체를 감싸는 상자입니다. -->
+    <div class="game-container">
+        <h1>🪐 태양계 특징 맞추기 게임! 🚀</h1>
+        <p class="description">같은 천체의 특징과 그림을 짝지어 보세요!</p>
+        
+        <!-- 게임판입니다. 카드가 16장 들어갈 공간입니다. -->
+        <div class="grid" id="grid">
+            <!-- 자바스크립트를 통해 여기에 카드가 자동으로 생성될 것입니다. -->
+        </div>
+
+        <!-- 게임을 처음부터 다시 시작하게 해주는 버튼입니다. -->
+        <button id="restart-btn" class="restart-btn">다시 시작하기</button>
+    </div>
+
+    <!-- 외부의 script.js 파일을 불러와서 게임의 동작 논리를 적용합니다. -->
+    <script src="script.js"></script>
+</body>
+</html>
